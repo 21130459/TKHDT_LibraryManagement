@@ -49,16 +49,28 @@ public class QLPhieuMuonTra implements ThuThu {
 
 	@Override
 	public void xoa(String id) {
-		// TODO Auto-generated method stub
-		
+		PhieuMuon phieuMuon = tim(id);
+		if(phieuMuon != null) {
+			listPhieuMuon.remove(phieuMuon);
+		}
 	}
 
 	@Override
-	public void capNhat(String id) {
-		// TODO Auto-generated method stub
-		
+	public void capNhat(String phieuMuonID, Sach sachMoi, Date ngayMuonMoi, Date ngayDuKienTraMoi) {
+		PhieuMuon phieuMuon = tim(phieuMuonID);
+        	if (phieuMuon != null) {
+            		if (phieuMuon.getTrangThai().equals("Da Tra")) {
+                		phieuMuon.setSach(null);
+            		}
+           		phieuMuon.setSach(sachMoi);
+            		phieuMuon.setNgayMuon(ngayMuonMoi);
+            		phieuMuon.setNgayDuKienTra(ngayDuKienTraMoi);
+        	} 
+		else {
+            	System.out.println("Khong tim thay phieu muon co ID: " + phieuMuonID);
+        	}	
 	}
-
+	
 	@Override
 	public int getSoLuong() {
 		// TODO Auto-generated method stub
